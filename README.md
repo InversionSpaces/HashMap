@@ -2,7 +2,7 @@
 
 ## Распределение значений хэш-функций
 
-Хэш-функции:
+Рассматриваемые хэш-функции:
 
 ```cpp
 uint64_t dummy_hash(const string& str) {
@@ -40,9 +40,11 @@ uint64_t xor_hash(const string& str) {
 	size_t i = 0;
 	for (const auto& c: str) {
 		hash ^= static_cast<uint64_t>(c) << 8 * i;
-		i = (i + 1) % 4;
+		i = (i + 1) % 8;
 	}
 	
 	return hash;
 }
 ```
+
+Строим распределения: `make dist`
