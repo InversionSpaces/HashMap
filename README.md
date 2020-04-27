@@ -51,8 +51,17 @@ uint64_t xor_hash(const string& str) {
 
 `make dist`
 
++ dummy
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/dummy_dist.jpg "dummy")
+
++len
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/len_dist.jpg "len")
+
++sum
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/sum_dist.jpg "sum")
+
++sumoverlen
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/sumoverlen_dist.jpg "sumoverlen")
+
++xor
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/xor_dist.jpg "xor")
