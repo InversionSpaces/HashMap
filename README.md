@@ -82,7 +82,7 @@ make prof
 
 ## Использование ассемблерного кода
 
-Сама функция хеширование на ассемблере:
+Функция хеширование на ассемблере:
 ```nasm
 global __xor_hash
 
@@ -126,3 +126,61 @@ __xor_hash:
 	ret
 ```
 
+Её использование в c++:
+```cpp
+extern "C" uint64_t __xor_hash(const char* str, size_t len);
+ 
+inline uint64_t xor_hash_asm(const string& str) {
+        return __xor_hash(str.data(), str.size());
+}
+```
+
+По соглашению о вызовах, аргементы передаются в `rdi` и `rsi`, возвращаемое значение находится в `rax`.
+
+Аналогично для функции сравнения строк:
+
+```nasm
+global __strcmp_asm
+
+	section .text
+__strcmp_asm:
+	mov rcx, rdx
+	shr rcx, 0x3 		; rcx = len / 8
+
+	test rcx, rcx 		; if !rcx - process_back
+	je .process_back
+
+	repe cmpsq 		; compare strings
+	je .process_back
+
+	xor rax, rax 		; if not equal - return 0
+	ret
+
+.process_back:
+	mov rcx, rdx      
+	and rcx, 0b111 		; rcx = len % 8
+
+	repe cmpsb 		; compare strings
+	je .end
+
+	xor rax, rax 		; if not equal - return 0
+	ret
+.end:
+	mov rax, 1
+	ret
+```
+
+Её использование в c++:
+
+```cpp
+extern "C" bool __strcmp_asm(const char* s1, const char* s2, size_t len);
+
+struct streqasm {
+	bool operator()(const string& lhs, const string& rhs) const {
+		if (lhs.size() != rhs.size())
+                	return false;
+			
+                return __strcmp_asm(lhs.data(), rhs.data(), lhs.size());
+	}
+};
+```
