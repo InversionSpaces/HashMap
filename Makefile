@@ -1,12 +1,16 @@
 CC=g++
-FLAGS=--std=c++17 -O3
+FLAGS=--std=c++17
 GP=gprof
 AS=nasm
 
-dist:
-	$(CC) $(FLAGS) dist.cpp -o dist
+dists:
+	./genstrs.sh strings
+	$(CC) $(FLAGS) -O3 dist.cpp -o dist
 	./dist
-	find -name "*_dist.csv" -exec ./graph.py {} \; 
+	find -name "*_dist.csv" -exec ./graph.py {} \;
+	mogrify -quality 100 -density 300 -format jpg *.pdf
+	mkdir -p results/dists
+	mv *.jpg results/dists
 
 asm:
 	$(AS) -f elf64 xor_hash.s -o xor_hash.o
@@ -31,4 +35,4 @@ asmprof: asm
 	$(GP) meas gmon.out | python3 -m gprof2dot -s | dot -Tpng -o asmprof.png
 
 clean:
-	rm -f dist meas gmon.out xor_hash.o strcmp.o
+	rm -f dist meas gmon.out xor_hash.o strcmp.o *.csv *.pdf *.jpg
