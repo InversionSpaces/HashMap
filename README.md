@@ -84,7 +84,7 @@ make prof
 
 Функция хеширование на ассемблере:
 ```nasm
-global __xor_hash
+	global __xor_hash
 
 	section .text
 __xor_hash:
@@ -140,7 +140,7 @@ inline uint64_t xor_hash_asm(const string& str) {
 Аналогично для функции сравнения строк:
 
 ```nasm
-global __strcmp_asm
+	global __strcmp_asm
 
 	section .text
 __strcmp_asm:
@@ -196,3 +196,14 @@ make asmprof
 Результат:
 
 ![asmprof](https://github.com/InversionSpaces/HashMap/blob/master/results/profs/asmprof.jpg)
+
+## Результаты оптимизации
+
+При компилировании без оптимизаций процент проводимого в критических функция времени сильно снизился:
+
+```
+| function |  time spent in cpp equivalent |  time spent in asm equivalent |
+|----------|-------------------------------|-------------------------------|
+| xor_hash |             46.16%            |             15.57%            |
+| streq    |             29.29%            |             9.88%             |
+```
