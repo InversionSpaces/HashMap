@@ -50,4 +50,4 @@ uint64_t xor_hash(const string& str) {
 Строим распределения: 
 `make dist`
 
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/dummy_dist.csv.pdf)
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/dummy_dist.csv.png)
