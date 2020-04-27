@@ -207,3 +207,36 @@ make asmprof
 | xor_hash |             46.16%            |             15.57%            |
 | streq    |             29.29%            |             9.88%             |
 ```
+
+Рассмотрим время выполнения тестов с разными уровнями оптимизации.
+
+Машина, на которой проводились тесты:
+```
+OS: Manjaro 19.0.2 Kyria
+Kernel: x86_64 Linux 5.4.30-1-MANJARO
+CPU: Intel Core i5-8250U @ 8x 3.4GHz
+RAM: 7872MiB
+```
+
+Версия `g++`:
+```
+g++ (Arch Linux 9.3.0-1) 9.3.0
+```
+
+Замеряем:
+
+```shell
+make meas asmmeas
+make meas asmmeas OLVL=-O1
+make meas asmmeas OLVL=-O2
+make meas asmmeas OLVL=-O3
+```
+
+```
+| OLVL    | cpp equivalent | asm equivalent | coefficient |
+|---------|----------------|----------------|-------------|
+| without |     25.20s     |     11.91s     |     2.11    |
+| O1      |      8.72s     |      7.57s     |     1.15    |
+| O2      |      7.54s     |      7.76s     |     0.97    |
+| O3      |      7.36s     |      7.16s     |     1.02    |
+```
