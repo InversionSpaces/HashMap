@@ -55,15 +55,15 @@ make dists
 
 Как входные данные используются 50 тысяч случайных строк из символов `[a-zA-Z0-9]` длиной от 5 до 105 символов. Полученные распределения:
 
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/dummy_dist.jpg "dummy")
+![dummy](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/dummy_dist.jpg "dummy")
  
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/len_dist.jpg "len")
+![len](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/len_dist.jpg "len")
 
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sum_dist.jpg "sum")
+![sum](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sum_dist.jpg "sum")
 
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sumoverlen_dist.jpg "sumoverlen")
+![sumoverlen](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sumoverlen_dist.jpg "sumoverlen")
 
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/xor_dist.jpg "xor")
+![xor](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/xor_dist.jpg "xor")
 
 Неплохие распределения показывают `sum` и `xor`. `sum` работает неплохо, вероятно, из-за случайности строк. Выберем `xor` для дальнейшего использования.
 
@@ -76,7 +76,7 @@ make prof
 ```
 
 Результаты:
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/profs/prof.jpg)
+![prof](https://github.com/InversionSpaces/HashMap/blob/master/results/profs/prof.jpg)
 
 Видно, что больше всего времени выполнения программы занимают функция хеширования и сравнения строк.
 
@@ -184,3 +184,15 @@ struct streqasm {
 	}
 };
 ```
+
+Её аргументы лежат в `rdi`, `rsi` и `rdx`, а возвращаемое значение так же в `rax`.
+
+## Профилирование с ассемблерным кодом
+
+```shell
+make asmprof
+```
+
+Результат:
+
+![asmprof](https://github.com/InversionSpaces/HashMap/blob/master/results/profs/asmprof.jpg)
