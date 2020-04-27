@@ -49,19 +49,16 @@ uint64_t xor_hash(const string& str) {
 
 ### Строим распределения: 
 
-`make dist`
+`make dists`
 
-+ dummy
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/dummy_dist.jpg "dummy")
+Как входные данные будут сгенерированы 50 тысяч случайных строк из символов `[a-zA-Z0-9]` длиной от 5 до 105 символов. Полученные распределения:
 
-+ len 
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/len_dist.jpg "len")
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/dummy_dist.jpg "dummy")
+ 
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/len_dist.jpg "len")
 
-+ sum
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/sum_dist.jpg "sum")
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sum_dist.jpg "sum")
 
-+ sumoverlen
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/sumoverlen_dist.jpg "sumoverlen")
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sumoverlen_dist.jpg "sumoverlen")
 
-+ xor
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/xor_dist.jpg "xor")
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/xor_dist.jpg "xor")
