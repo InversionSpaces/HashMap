@@ -49,5 +49,5 @@ uint64_t xor_hash(const string& str) {
 
 Строим распределения: 
 `make dist`
-<object data="https://github.com/InversionSpaces/HashMap/blob/master/results/dist/dummy_dist.csv.pdf" type="application/pdf" width="700px" height="700px">
+<object data="https://github.com/InversionSpaces/HashMap/raw/master/results/dist/dummy_dist.csv.pdf" type="application/pdf" width="700px" height="700px">
 </object>
