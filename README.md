@@ -223,6 +223,8 @@ RAM: 7872MiB
 g++ (Arch Linux 9.3.0-1) 9.3.0
 ```
 
+Замеряем:
+
 ```shell
 make meas asmmeas
 make meas asmmeas OLVL=-O1
