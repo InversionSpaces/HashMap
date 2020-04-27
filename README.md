@@ -53,7 +53,7 @@ uint64_t xor_hash(const string& str) {
 make dists
 ```
 
-Как входные данные будут сгенерированы 50 тысяч случайных строк из символов `[a-zA-Z0-9]` длиной от 5 до 105 символов. Полученные распределения:
+Как входные данные используются 50 тысяч случайных строк из символов `[a-zA-Z0-9]` длиной от 5 до 105 символов. Полученные распределения:
 
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/dummy_dist.jpg "dummy")
  
@@ -65,4 +65,12 @@ make dists
 
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/xor_dist.jpg "xor")
 
-Неплохие распределения показывают `sum` и `xor`. `sum` работает неплохо, вероятно, из-за случайности строк. Выберем xor для дальнейшего использования.
+Неплохие распределения показывают `sum` и `xor`. `sum` работает неплохо, вероятно, из-за случайности строк. Выберем `xor` для дальнейшего использования.
+
+## Профилирование
+
+Для нахождения узких мест программы совершим по 5 миллионов операций `insert`, `erase`, `contains` над теми же 50 тысячами строк в случайном порядке. Профилирование проводём при помощи [gprof](https://sourceware.org/binutils/docs/gprof/). Результаты визуализируем при помощи [gprof2dot](https://github.com/jrfonseca/gprof2dot).
+
+```shell
+make prof
+```
