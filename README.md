@@ -2,7 +2,7 @@
 
 ## Распределение значений хэш-функций
 
-Рассматриваемые хэш-функции:
+### Рассматриваемые хэш-функции:
 
 ```cpp
 uint64_t dummy_hash(const string& str) {
@@ -47,8 +47,21 @@ uint64_t xor_hash(const string& str) {
 }
 ```
 
-Строим распределения: 
+### Строим распределения: 
 
 `make dist`
 
-<embed src="https://github.com/InversionSpaces/HashMap/raw/master/results/dist/dummy_dist.csv.pdf" type="application/pdf">
++ dummy
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/dummy_dist.jpg "dummy")
+
++ len 
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/len_dist.jpg "len")
+
++ sum
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/sum_dist.jpg "sum")
+
++ sumoverlen
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/sumoverlen_dist.jpg "sumoverlen")
+
++ xor
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/xor_dist.jpg "xor")
