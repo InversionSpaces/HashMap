@@ -16,11 +16,11 @@ asm:
 	$(AS) -f elf64 strcmp.s -o strcmp.o
 
 meas:
-	$(CC) $(FLAGS) meas.cpp -o meas
+	$(CC) $(FLAGS) $(OLVL) meas.cpp -o meas
 	time -p ./meas
 
 asmmeas: asm
-	$(CC) $(FLAGS) -DASMOPTIMIZATION meas.cpp xor_hash.o strcmp.o -o meas
+	$(CC) $(FLAGS) $(OLVL) -DASMOPTIMIZATION meas.cpp xor_hash.o strcmp.o -o meas
 	time -p ./meas
 
 prof:
