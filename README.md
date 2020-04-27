@@ -232,6 +232,8 @@ make meas asmmeas OLVL=-O2
 make meas asmmeas OLVL=-O3
 ```
 
+Результаты:
+
 ```
 | OLVL    | cpp equivalent | asm equivalent | coefficient |
 |---------|----------------|----------------|-------------|
