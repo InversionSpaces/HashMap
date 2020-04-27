@@ -51,4 +51,4 @@ uint64_t xor_hash(const string& str) {
 
 `make dist`
 
-<embed src="https://github.com/InversionSpaces/HashMap/raw/master/results/dist/dummy_dist.csv.pdf" type="application/pdf">
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/dummy_dist.jpg)
