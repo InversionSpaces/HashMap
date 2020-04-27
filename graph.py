@@ -16,6 +16,6 @@ try:
     plt.ylabel("List size");
 
     plt.bar(range(len(data)), data)
-    plt.savefig(sys.argv[1] + ".pdf")
+    plt.savefig(sys.argv[1] + ".png")
 except Exception as e:
     print(e)
