@@ -64,3 +64,5 @@ make dists
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sumoverlen_dist.jpg "sumoverlen")
 
 ![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/xor_dist.jpg "xor")
+
+Неплохие распределения показывают `sum` и `xor`. Выберем xor для дальнейшего использования.
