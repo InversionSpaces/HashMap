@@ -49,19 +49,28 @@ uint64_t xor_hash(const string& str) {
 
 ### Строим распределения: 
 
-`make dist`
+```shell
+make dists
+```
 
-+ dummy
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/dummy_dist.jpg "dummy")
+Как входные данные используются 50 тысяч случайных строк из символов `[a-zA-Z0-9]` длиной от 5 до 105 символов. Полученные распределения:
 
-+ len 
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/len_dist.jpg "len")
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/dummy_dist.jpg "dummy")
+ 
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/len_dist.jpg "len")
 
-+ sum
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/sum_dist.jpg "sum")
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sum_dist.jpg "sum")
 
-+ sumoverlen
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/sumoverlen_dist.jpg "sumoverlen")
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/sumoverlen_dist.jpg "sumoverlen")
 
-+ xor
-![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dist/xor_dist.jpg "xor")
+![alt text](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/xor_dist.jpg "xor")
+
+Неплохие распределения показывают `sum` и `xor`. `sum` работает неплохо, вероятно, из-за случайности строк. Выберем `xor` для дальнейшего использования.
+
+## Профилирование
+
+Для нахождения узких мест программы совершим по 5 миллионов операций `insert`, `erase`, `contains` над теми же 50 тысячами строк в случайном порядке. Профилирование проводём при помощи [gprof](https://sourceware.org/binutils/docs/gprof/). Результаты визуализируем при помощи [gprof2dot](https://github.com/jrfonseca/gprof2dot).
+
+```shell
+make prof
+```
