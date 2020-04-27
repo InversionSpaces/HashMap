@@ -21,7 +21,7 @@ __strcmp_asm:
 	repe cmpsb 		; compare strings
 	je .end
 
-	xor rax, rax
+	xor rax, rax 		; if not equal - return 0
 	ret
 .end:
 	mov rax, 1
