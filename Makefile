@@ -25,14 +25,14 @@ asmmeas: asm
 
 prof:
 	$(CC) $(FLAGS) -pg meas.cpp -o meas
-	./meas
+	./meas 50000 100
 	$(GP) meas gmon.out | python3 -m gprof2dot -s | dot -Tjpg -Gdpi=300 -o prof.jpg
 	mkdir -p results/profs
 	mv prof.jpg results/profs
 
 asmprof: asm
 	$(CC) $(FLAGS) -DASMOPTIMIZATION -pg meas.cpp xor_hash.o strcmp.o -o meas
-	./meas
+	./meas 50000 100
 	$(GP) meas gmon.out | python3 -m gprof2dot -s | dot -Tjpg -Gdpi=300 -o asmprof.jpg
 	mkdir -p results/profs
 	mv asmprof.jpg results/profs

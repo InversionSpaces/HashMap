@@ -120,12 +120,13 @@ int main(int argc, char** argv) {
 	if (argc == 2) amount = stoi(argv[1]);
 
 	auto lines = load_lines("strings");
+	if (lines.size() == 0)
+		throw runtime_error("Empty strings file");
 	cout << "Lines loaded" << endl;
 	
 	shuffle(lines.begin(), lines.end(), rd);
 	if (lines.size() > amount) lines.resize(amount);
 	cout << "Processing " << lines.size() << " lines" << endl;
-
 
 	const vector<pair<const char*, hashfunc_t>> hashes = {
 		{"len", len_hash},
