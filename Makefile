@@ -17,11 +17,11 @@ asm:
 
 meas:
 	$(CC) $(FLAGS) $(OLVL) meas.cpp -o meas
-	time -p ./meas
+	time -p ./meas 100000 100
 
 asmmeas: asm
 	$(CC) $(FLAGS) $(OLVL) -DASMOPTIMIZATION meas.cpp xor_hash.o strcmp.o -o meas
-	time -p ./meas
+	time -p ./meas 100000 100
 
 prof:
 	$(CC) $(FLAGS) -pg meas.cpp -o meas
