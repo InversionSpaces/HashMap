@@ -11,6 +11,7 @@
 #include <utility>
 
 #include "hashmap.hpp"
+#include "helpers.hpp"
 
 using namespace std;
 
@@ -45,18 +46,6 @@ uint64_t xor_hash(const string& str) {
 	}
 	
 	return hash;
-}
-
-vector<string> load_lines(const char* filename) {
-	ifstream input(filename);
-
-	vector<string> retval;
-	for (	retval.emplace_back(); 
-		getline(input, retval.back()); 
-		retval.emplace_back());
-	retval.pop_back();
-
-	return retval;
 }
 
 template<typename time_t = chrono::microseconds>
@@ -124,8 +113,20 @@ void test_hash(vector<string>& lines, const char* name, hashfunc_t func) {
 	avgout.close();
 }
 
-int main() {
+random_device rd;
+
+int main(int argc, char** argv) {
+	int amount = 10000;
+	if (argc == 2) amount = stoi(argv[1]);
+
 	auto lines = load_lines("strings");
+	cout << "Lines loaded" << endl;
+	
+	shuffle(lines.begin(), lines.end(), rd);
+	if (lines.size() > amount) lines.resize(amount);
+	cout << "Processing " << lines.size() << " lines" << endl;
+
+
 	const vector<pair<const char*, hashfunc_t>> hashes = {
 		{"len", len_hash},
 		{"sum", sum_hash},

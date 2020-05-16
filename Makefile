@@ -5,7 +5,7 @@ AS=nasm
 
 dists:
 	$(CC) $(FLAGS) -O3 dist.cpp -o dist
-	./dist
+	./dist 100000
 	find -name "*_dist.csv" -exec ./graph.py {} \;
 	mogrify -quality 100 -density 300 -format jpg *.pdf
 	mkdir -p results/dists
