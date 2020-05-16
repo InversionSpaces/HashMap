@@ -52,8 +52,7 @@ uint64_t xor_hash(const string& str) {
 ```shell
 make dists
 ```
-
-Как входные данные используются 50 тысяч случайных строк из символов `[a-zA-Z0-9]` длиной от 5 до 105 символов. Полученные распределения:
+Как входные данные используется 50000 случайных английских слов из словаря.
 
 ![dummy](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/dummy_dist.jpg "dummy")
  
@@ -65,7 +64,7 @@ make dists
 
 ![xor](https://github.com/InversionSpaces/HashMap/blob/master/results/dists/xor_dist.jpg "xor")
 
-Неплохие распределения показывают `sum` и `xor`. `sum` работает неплохо, вероятно, из-за случайности строк. Выберем `xor` для дальнейшего использования.
+Приемлимое распределение показывает 'xor'.
 
 ## Профилирование
 
