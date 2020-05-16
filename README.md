@@ -135,7 +135,7 @@ inline uint64_t xor_hash_asm(const string& str) {
 }
 ```
 
-По соглашению о вызовах, аргементы передаются в `rdi` и `rsi`, возвращаемое значение находится в `rax`.
+По соглашению о вызовах, аргументы передаются в `rdi` и `rsi`, возвращаемое значение находится в `rax`.
 
 Аналогично для функции сравнения строк:
 
@@ -231,6 +231,8 @@ make meas asmmeas OLVL=-O1
 make meas asmmeas OLVL=-O2
 make meas asmmeas OLVL=-O3
 ```
+
+Результаты:
 
 ```
 | OLVL    | cpp equivalent | asm equivalent | coefficient |
