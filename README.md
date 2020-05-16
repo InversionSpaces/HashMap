@@ -201,13 +201,13 @@ make asmprof
 При компилировании без оптимизаций процент проводимого в критических функция времени сильно снизился:
 
 ```
-| function |  time spent in cpp equivalent |  time spent in asm equivalent |
-|----------|-------------------------------|-------------------------------|
-| xor_hash |             46.16%            |             15.57%            |
-| streq    |             29.29%            |             9.88%             |
+| Function | Time spent in it without optimization | Time in it with optimization |
+|:--------:|:-------------------------------------:|:----------------------------:|
+| xor_hash |           19.42% of run time          |       2.93% of run time      |
+|   streq  |           10.81% of run time          |       8.93% of run time      |
 ```
 
-Рассмотрим время выполнения тестов с разными уровнями оптимизации.
+Выполним тесты: проведём по 10 миллионов операций `insert`, `contains` и `erase` над 100 тысячами случайных строк из словаря в случайном порядке.
 
 Машина, на которой проводились тесты:
 ```
@@ -225,19 +225,19 @@ g++ (Arch Linux 9.3.0-1) 9.3.0
 Замеряем:
 
 ```shell
-make meas asmmeas
-make meas asmmeas OLVL=-O1
-make meas asmmeas OLVL=-O2
-make meas asmmeas OLVL=-O3
+make meas asmmeas OLVL=-O0 clean
+make meas asmmeas OLVL=-O1 clean
+make meas asmmeas OLVL=-O2 clean
+make meas asmmeas OLVL=-O3 clean
 ```
 
 Результаты:
 
 ```
-| OLVL    | cpp equivalent | asm equivalent | coefficient |
-|---------|----------------|----------------|-------------|
-| without |     25.20s     |     11.91s     |     2.11    |
-| O1      |      8.72s     |      7.57s     |     1.15    |
-| O2      |      7.54s     |      7.76s     |     0.97    |
-| O3      |      7.36s     |      7.16s     |     1.02    |
+| Optimization level | Time without optimization  | Time with optimization | Time without optimization/Time with optimization |
+|:------------------:|:--------------------------:|:----------------------:|:------------------------------------------------:|
+| -O0                |           61.57s           |         50.88s         |                       1.21                       |
+| -O1                |           26.50s           |         27.70s         |                       0.96                       |
+| -O2                |           26.25s           |         27.30s         |                       0.96                       |
+| -O3                |           25.36s           |         27.81s         |                       0.91                       |
 ```
