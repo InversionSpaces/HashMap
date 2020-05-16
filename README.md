@@ -201,10 +201,10 @@ make asmprof
 При компилировании без оптимизаций процент проводимого в критических функция времени сильно снизился:
 
 ```
-| function |  time spent in fun |  time spent in asm equivalent |
-|----------|-------------------------------|-------------------------------|
-| xor_hash |             46.16%            |             15.57%            |
-| streq    |             29.29%            |             9.88%             |
+| Function | Time spent in it without optimization | Time in it with optimization |
+|:--------:|:-------------------------------------:|:----------------------------:|
+| xor_hash |           19.42% of run time          |       2.93% of run time      |
+|   streq  |           10.81% of run time          |       8.93% of run time      |
 ```
 
 Рассмотрим время выполнения тестов с разными уровнями оптимизации.
