@@ -234,10 +234,10 @@ make meas asmmeas OLVL=-O3 clean
 Результаты:
 
 ```
-| Optimization<br>level | Time without<br>asm optimization | Time with<br>asm optimization | Time without asm optimization<br>/<br>Time with asm optimization |
-|:---------------------:|:--------------------------------:|:-----------------------------:|:----------------------------------------------------------------:|
-| -O0                   |              61.57s              |             50.88s            |                               1.21                               |
-| -O1                   |              26.50s              |             27.70s            |                               0.96                               |
-| -O2                   |              26.25s              |             27.30s            |                               0.96                               |
-| -O3                   |              25.36s              |             27.81s            |                               0.91                               |
+| Optimization level | Time without optimization  | Time with optimization | Time without optimization/Time with optimization |
+|:------------------:|:--------------------------:|:----------------------:|:------------------------------------------------:|
+| -O0                |           61.57s           |         50.88s         |                       1.21                       |
+| -O1                |           26.50s           |         27.70s         |                       0.96                       |
+| -O2                |           26.25s           |         27.30s         |                       0.96                       |
+| -O3                |           25.36s           |         27.81s         |                       0.91                       |
 ```
